@@ -27,16 +27,12 @@ class Cliente extends Model
         'estado' => 'boolean',
     ];
 
-    /* =====================
-     * Reglas de validación
-     * =====================
-     */
     public static function rules(): array
     {
         return [
             'nombres'   => 'required|string|max:100',
             'apellidos' => 'required|string|max:100',
-            'email'     => 'required|email',
+            'email'     => 'required|email|max:150',
             'cedula'    => 'required|string|max:20',
             'telefono'  => 'nullable|string|max:20',
             'direccion' => 'nullable|string|max:255',
@@ -44,10 +40,6 @@ class Cliente extends Model
         ];
     }
 
-    /* =====================
-     * Comportamiento dominio
-     * =====================
-     */
     public static function crear(array $data): self
     {
         return self::create($data);
